@@ -11,3 +11,4 @@ CREATE TABLE `test`.`persona` (
 INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES ('Juan', 'Betancur', 'mail@gmail.com', '321445');
 INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES ('Camilo', 'Rico', 'camilo@mail.com', '6544789');
 INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES ('JC', 'BR', 'jcbr@email.com', '477852');
+INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES ('Carola', 'Restrepo', 'cr@gmail.com', '789511');

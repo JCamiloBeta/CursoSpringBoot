@@ -48,4 +48,25 @@ public class ControladorInicio{
         personaService.guardar(persona);
         return "redirect:/";
     }
+
+    @GetMapping("/editar/{id_persona}")
+    public String editar(Persona persona, Model model){
+        persona= personaService.encontrarPersona(persona);
+        model.addAttribute("persona", persona);
+        return "modificar";
+    }
+/* --Forma de eliminar por medio de Path
+
+    @GetMapping("/eliminar/{id_persona}")
+    public String eliminar(Persona persona){
+        personaService.eliminar(persona);
+        return "redirect:/";
+    }
+*/
+    //Forma de eliminar por medio de Query
+    @GetMapping("/eliminar")
+    public String eliminar(Persona persona){
+        personaService.eliminar(persona);
+        return "redirect:/";
+    }
 }

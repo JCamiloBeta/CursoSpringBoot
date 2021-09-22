@@ -18,12 +18,20 @@
             <th>Apellido</th>
             <th>Email</th>
             <th>Teléfono</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         <tr th:each="persona : ${personas}">
             <td th:text="${persona.nombre}">Mostrar Nombre</td>
             <td th:text="${persona.apellido}">Mostrar Apellido</td>
             <td th:text="${persona.email}">Mostrar Email</td>
             <td th:text="${persona.telefono}">Mostrar Teléfono</td>
+            <td><a th:href="@{/editar/} + ${persona.id_persona}" th:text="Editar"/></td>
+            <!-- Forma de eliminar con Path
+            <td><a th:href="@{/eliminar/} + ${persona.id_persona}" th:text="Eliminar"/></td>
+            -->
+            <!--Otra forma de eliminar con Query-->
+            <td><a th:href="@{/eliminar(id_persona=${persona.id_persona})}" th:text="Eliminar"/></td>
         </tr>
     </table>
 </div>

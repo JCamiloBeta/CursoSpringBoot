@@ -1,7 +1,9 @@
-package jc.com.br.PruebaSpring;
+package jc.com.br.PruebaSpring.web;
 
+import jc.com.br.PruebaSpring.dao.IPersonaDao;
 import jc.com.br.PruebaSpring.domain.Persona;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,38 +18,24 @@ import java.util.Arrays;
 @Slf4j
 public class ControladorInicio{
 
+
+
+    @Autowired
+    private IPersonaDao personaDao;
+
     @Value("${index.saludo}")
     private String saludo;
 
     @GetMapping("/")
     public String inicio(Model model){
         var mensaje = "Hola mundo con Thymeleaf";
-        var persona = new Persona();
-        var persona2 = new Persona();
-        var persona3 = new Persona();
-
-        persona.setNombre("Camilo");
-        persona.setApellido("Betancur");
-        persona.setEmail("jbetancurricogmail.com");
-        persona.setTelefono("3105149288");
-
-        persona2.setNombre("Juan");
-        persona2.setApellido("Rico");
-        persona2.setEmail("jbetancurrico@gmail.com");
-        persona2.setTelefono("3022233");
-
-        persona3.setNombre("JC");
-        persona3.setApellido("BR");
-        persona3.setEmail("jcamilob@outlook.com");
-        persona3.setTelefono("3206905927");
-
-        var personas = Arrays.asList(persona, persona2, persona3);
+        var personas = personaDao.findAll();
 
         log.info("Ejecutando el controlador Spring MVC");
 
         model.addAttribute("mensaje", mensaje);
-        model.addAttribute("saludo", saludo);
         model.addAttribute("personas", personas);
+        model.addAttribute("saludo", saludo);
         return "index";
     }
 

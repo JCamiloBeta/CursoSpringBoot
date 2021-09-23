@@ -7,11 +7,21 @@
 </head>
 <body>
     <header th:fragment="header">
-        <h1>Control de Clientes</h1>
+        <h1 th:text="#{plantilla.titulo}">Titulo</h1>
     </header>
 
     <footer th:fragment="footer">
-        <p>Derechos Reservados <a href="https://github.com/JCamiloBeta/CursoSpringBoot" target="_blank">Página Web disponible en GitHub.</a></p>
+        <div>
+            <br/>
+            <a th:href="@{/(lang=es)}">ES</a> |
+            <a th:href="@{/(lang=en)}">EN</a> |
+
+            <!--
+        De esta manera se hace para que el hipervinculo no se pierda,
+        Sino es el caso se puede hacer como se hace en el mensaje del Header
+            -->
+            <span>[[#{plantilla.pie-pagina}]]<a href="https://github.com/JCamiloBeta/CursoSpringBoot" target="_blank">Página Web disponible en GitHub.</a></span>
+        </div>
     </footer>
 </body>
 </html>

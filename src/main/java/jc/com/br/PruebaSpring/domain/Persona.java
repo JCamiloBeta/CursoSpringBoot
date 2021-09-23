@@ -3,10 +3,7 @@ package jc.com.br.PruebaSpring.domain;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 
@@ -28,7 +25,8 @@ public class Persona implements Serializable {
     @NotEmpty
     @Email
     private String email;
+    @Positive
     @Size(min = 7, max = 15)
-    @Digits(fraction = 0, integer = 10)
+    @Digits(fraction = 0, integer = 15)
     private String telefono;
 }

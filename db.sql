@@ -8,6 +8,33 @@ CREATE TABLE `test`.`persona` (
   `telefono` VARCHAR(45) NULL,
   PRIMARY KEY (`id_persona`));
 
+  CREATE TABLE `test`.`user` (
+    `id_username` INT NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(45) NULL,
+    `password` VARCHAR(128) NULL,
+    `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id_username`));
+
+    CREATE TABLE `test`.`rol` (
+      `id_rol` INT NOT NULL AUTO_INCREMENT,
+      `nombre` VARCHAR(45) NULL,
+      `id_username` INT NULL,
+      PRIMARY KEY (`id_rol`),
+      INDEX `id_rol_username_idx` (`id_username` ASC) VISIBLE,
+      CONSTRAINT `id_rol_username`
+        FOREIGN KEY (`id_username`)
+        REFERENCES `test`.`user` (`id_username`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION);
+
+INSERT INTO `test`.`user` (`username`, `password`) VALUES ('admin', '9701');
+INSERT INTO `test`.`user` (`username`, `password`) VALUES ('user', '9701');
+
+INSERT INTO `test`.`rol` (`nombre`, `id_username`) VALUES ('ROLE_ADMIN', '1');
+INSERT INTO `test`.`rol` (`nombre`, `id_username`) VALUES ('ROLE_USER', '2');
+INSERT INTO `test`.`rol` (`nombre`, `id_username`) VALUES ('ROLE_USER', '2');
+
+
 INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES ('Juan', 'Betancur', 'mail@gmail.com', '321445');
 INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES ('Camilo', 'Rico', 'camilo@mail.com', '6544789');
 INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES ('JC', 'BR', 'jcbr@email.com', '477852');

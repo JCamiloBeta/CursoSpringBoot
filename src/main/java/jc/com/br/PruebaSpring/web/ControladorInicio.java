@@ -41,6 +41,13 @@ public class ControladorInicio{
         model.addAttribute("mensaje", mensaje);
         model.addAttribute("personas", personas);
         model.addAttribute("saludo", saludo);
+
+        var saldoTotal = 0D;
+        for(var p:personas){
+            saldoTotal += p.getSaldo();
+        }
+        model.addAttribute("saldoTotal", saldoTotal);
+        model.addAttribute("totalClientes", personas.size());
         return "index";
     }
 

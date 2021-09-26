@@ -17,7 +17,6 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_persona;
-
     @NotEmpty
     private String nombre;
     @NotEmpty
@@ -29,4 +28,6 @@ public class Persona implements Serializable {
     @Size(min = 7, max = 15)
     @Digits(fraction = 0, integer = 15)
     private String telefono;
+    @NotNull
+    private Double saldo;
 }

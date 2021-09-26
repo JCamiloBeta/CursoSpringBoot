@@ -8,6 +8,8 @@
 <body>
     <header th:replace="layout/plantilla :: header"/>
 
+    <section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+
     <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>
     <p th:text="${mensaje}"></p>
     <p th:text="${saludo}"></p>

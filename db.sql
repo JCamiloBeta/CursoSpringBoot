@@ -41,3 +41,10 @@ INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES 
 INSERT INTO `test`.`persona` (`nombre`, `apellido`, `email`, `telefono`) VALUES ('Carola', 'Restrepo', 'cr@gmail.com', '789511');
 --Para reiniciar el autorincrementable del id de la tabla
 ALTER TABLE test.persona AUTO_INCREMENT = 1;
+
+ALTER TABLE `test`.`persona`
+ADD COLUMN `saldo` DOUBLE NULL AFTER `telefono`;
+
+UPDATE `test`.`persona` SET `saldo` = '250' WHERE (`id_persona` = '11');
+UPDATE `test`.`persona` SET `saldo` = '200' WHERE (`id_persona` = '13');
+UPDATE `test`.`persona` SET `saldo` = '150' WHERE (`id_persona` = '14');
